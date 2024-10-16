@@ -25,4 +25,12 @@ service : {
     post_job: (text, text, text, nat32) -> (variant { Ok: text; Err: text });
     get_job: (text) -> (opt Job) query;
     list_open_jobs: () -> (vec Job) query;
+    get_all_jobs: () -> (vec Job) query;
+    update_job_status: (text, JobStatus) -> (variant { Ok; Err: text });
+    
+    // Add new methods for reputation management
+    complete_job: (text) -> (variant { Ok; Err: text });
+    resolve_dispute: (text, text, bool) -> (variant { Ok; Err: text });
+    // get_user_reputation: (text) -> (opt nat32) query;
+    calculate_reputation: (text) -> (opt text) query; // Update return type to opt text
 }
